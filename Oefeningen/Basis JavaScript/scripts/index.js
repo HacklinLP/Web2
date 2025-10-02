@@ -34,6 +34,17 @@
     const password = "blablabla";
     //probeer zo veel mogelijk const te gebruiken (goede gewoonte) indien de waarde toch niet meer moet veranderen
 
+    const printNaam = (naam, leeftijd) => { // dit is een (arrow)functie
+        console.log(`de persoon ${naam} is ${leeftijd} jaar`);
+    }
 
+    // DEZE NIET DOEN
+    // function printNaam(naam, leeftijd) {
+    //     console.log(`de persoon ${naam} is ${leeftijd} jaar`);
+    // }
+
+    // const printNaam = function(naam, leeftijd) {
+    //     console.log(`de persoon ${naam} is ${leeftijd} jaar`);
+    // }
 
 
