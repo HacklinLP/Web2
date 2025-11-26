@@ -1,7 +1,7 @@
 const setup = () =>
 {
-    let btn = document.getElementById("paradivke")
-    btn.addEventListener('click', printKlik);
+    let div = document.getElementById("paradivke")
+    div.addEventListener('click', printKlik);
 
 }
 
