@@ -1,8 +1,23 @@
 const setup = () =>
 {
-    let btn = document.getElementById("paradivke")
-    btn.addEventListener('click', printKlik);
+    let div = document.getElementById("paradivke")
+    div.addEventListener('click', printKlik);
+    div.addEventListener('mouseenter', printEnter);
+    div.addEventListener('mouseleave', printLeave);
+    div.addEventListener('mousemove', printMove);
 
+
+}
+const printEnter = () => {
+    console.log("enter!");
+}
+
+const printLeave = () => {
+    console.log("leave!");
+}
+
+const printMove = () => {
+    console.log("MOVEEEEEE!");
 }
 
 const printKlik = () => {
