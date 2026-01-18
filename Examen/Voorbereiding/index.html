@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Voorbeelden - Cursus Stijl</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"] {
+            padding: 8px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            margin: 5px;
+            font-size: 14px;
+        }
+
+        .para {
+            padding: 10px;
+            margin: 10px 0;
+            background: #e8e8e8;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .para.belangrijk {
+            background: #ffeb3b;
+            font-weight: bold;
+        }
+
+        .output {
+            padding: 10px;
+            margin: 10px 0;
+            background: #f0f0f0;
+            border-radius: 4px;
+            min-height: 30px;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        .removeItem {
+            cursor: pointer;
+            color: red;
+        }
+
+        .removeItem:hover {
+            text-decoration: underline;
+        }
+
+        .console-output {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        .console-output::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .console-output::-webkit-scrollbar-track {
+            background: #2d2d2d;
+        }
+
+        .console-output::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 5px;
+        }
+
+        #divKleur {
+            width: 200px;
+            height: 100px;
+            border: 2px solid #333;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        #divVerberg {
+            padding: 10px;
+            background: #e8f5e9;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        #divContainer {
+            padding: 10px;
+            background: #fff3e0;
+            margin: 10px 0;
+            border-radius: 4px;
+            min-height: 50px;
+        }
+
+        .nieuwElement {
+            padding: 5px;
+            margin: 5px 0;
+            background: #e1bee7;
+            border-radius: 4px;
+        }
+
+        .item {
+            padding: 5px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 JavaScript Voorbeelden</h1>
+            <p>Voorbeelden in cursus stijl - DOM manipulatie</p>
+        </header>
+        
+        <div class="content">
+            <!-- Example 3: Click Event -->
+            <div class="section">
+                <h2>Voorbeeld 3: Click Event</h2>
+                <p>Klik op de knop om een bericht te tonen</p>
+                <button id="btnKlik">Klik Mij</button>
+                <div id="output" class="output"></div>
+            </div>
+
+            <!-- Example 4: Toggle Class -->
+            <div class="section">
+                <h2>Voorbeeld 4: Toggle Class</h2>
+                <p>Klik op een paragraaf om de "belangrijk" class te toggle</p>
+                <p class="para">Paragraaf 1 - Klik mij</p>
+                <p class="para">Paragraaf 2 - Klik mij</p>
+                <p class="para">Paragraaf 3 - Klik mij</p>
+            </div>
+
+            <!-- Example 5: Swap Values -->
+            <div class="section">
+                <h2>Voorbeeld 5: Waarden Wisselen</h2>
+                <p>Wissel de waarden tussen input en output</p>
+                <input type="text" id="txtInput" placeholder="Input tekst">
+                <button id="btnWissel">Wissel</button>
+                <div id="txtOutput" class="output">Output tekst</div>
+            </div>
+
+            <!-- Example 6: Add to List -->
+            <div class="section">
+                <h2>Voorbeeld 6: Item Toevoegen</h2>
+                <p>Voeg items toe aan de lijst</p>
+                <input type="text" id="txtItem" placeholder="Nieuw item">
+                <button id="btnVoegToe">Voeg Toe</button>
+                <ul id="lstItems"></ul>
+            </div>
+
+            <!-- Example 7: Change Text -->
+            <div class="section">
+                <h2>Voorbeeld 7: Tekst Wijzigen</h2>
+                <p>Voer je naam in</p>
+                <input type="text" id="txtNaam" placeholder="Je naam">
+                <button id="btnWijzig">Wijzig</button>
+                <div id="txtWelkom" class="output"></div>
+            </div>
+
+            <!-- Example 8: Counter -->
+            <div class="section">
+                <h2>Voorbeeld 8: Teller</h2>
+                <p>Verhoog, verlaag of reset de teller</p>
+                <button id="btnMin">-</button>
+                <span id="txtTeller" class="output" style="display: inline-block; min-width: 50px; text-align: center;">0</span>
+                <button id="btnPlus">+</button>
+                <button id="btnReset">Reset</button>
+            </div>
+
+            <!-- Example 9: Change Color -->
+            <div class="section">
+                <h2>Voorbeeld 9: Kleur Wijzigen</h2>
+                <p>Kies een achtergrondkleur</p>
+                <button id="btnRood">Rood</button>
+                <button id="btnGroen">Groen</button>
+                <button id="btnBlauw">Blauw</button>
+                <div id="divKleur"></div>
+            </div>
+
+            <!-- Example 10: Show/Hide -->
+            <div class="section">
+                <h2>Voorbeeld 10: Tonen/Verbergen</h2>
+                <p>Toggle de zichtbaarheid van het element</p>
+                <button id="btnToggle">Toggle</button>
+                <div id="divVerberg">Dit element kan worden getoond/verborgen</div>
+            </div>
+
+            <!-- Example 11: Validation -->
+            <div class="section">
+                <h2>Voorbeeld 11: Validatie</h2>
+                <p>Valideer email en wachtwoord</p>
+                <input type="email" id="txtEmail" placeholder="Email">
+                <input type="password" id="txtWachtwoord" placeholder="Wachtwoord (min 6 karakters)">
+                <button id="btnSubmit">Valideer</button>
+                <div id="txtFout" class="output"></div>
+            </div>
+
+            <!-- Example 12: Loop -->
+            <div class="section">
+                <h2>Voorbeeld 12: Loop Door Elementen</h2>
+                <p>Wijzig alle items in één keer</p>
+                <button id="btnLoop">Wijzig Items</button>
+                <div class="item">Item 1</div>
+                <div class="item">Item 2</div>
+                <div class="item">Item 3</div>
+            </div>
+
+            <!-- Example 13: Shopping List -->
+            <div class="section">
+                <h2>Voorbeeld 13: Boodschappenlijst</h2>
+                <p>Voeg boodschappen toe en toon ze</p>
+                <input type="text" id="txtBoodschap" placeholder="Boodschap">
+                <button id="btnVoegBoodschap">Voeg Toe</button>
+                <button id="btnToonBoodschappen">Toon Lijst</button>
+                <button id="btnLeeg">Leeg Lijst</button>
+                <ul id="lstBoodschappen"></ul>
+            </div>
+
+            <!-- Example 14: Conditional -->
+            <div class="section">
+                <h2>Voorbeeld 14: Conditionele Logica</h2>
+                <p>Controleer leeftijd</p>
+                <input type="number" id="txtLeeftijd" placeholder="Leeftijd">
+                <button id="btnCheck">Check</button>
+                <div id="txtResultaat" class="output"></div>
+            </div>
+
+            <!-- Example 15: String Operations -->
+            <div class="section">
+                <h2>Voorbeeld 15: String Operaties</h2>
+                <p>Voer tekst in voor string operaties</p>
+                <input type="text" id="txtTekst" placeholder="Tekst">
+                <button id="btnString">Analyseer</button>
+                <div id="txtStringResult" class="output"></div>
+            </div>
+
+            <!-- Example 16: Math -->
+            <div class="section">
+                <h2>Voorbeeld 16: Berekeningen</h2>
+                <p>Voer twee getallen in</p>
+                <input type="number" id="txtGetal1" placeholder="Getal 1">
+                <input type="number" id="txtGetal2" placeholder="Getal 2">
+                <button id="btnBereken">Bereken</button>
+                <div id="txtBerekening" class="output"></div>
+            </div>
+
+            <!-- Example 17: Remove Items -->
+            <div class="section">
+                <h2>Voorbeeld 17: Items Verwijderen</h2>
+                <p>Klik op een item om het te verwijderen</p>
+                <div class="removeItem">Item 1 - Klik om te verwijderen</div>
+                <div class="removeItem">Item 2 - Klik om te verwijderen</div>
+                <div class="removeItem">Item 3 - Klik om te verwijderen</div>
+            </div>
+
+            <!-- Example 18: Image Change -->
+            <div class="section">
+                <h2>Voorbeeld 18: Afbeelding Wijzigen</h2>
+                <p>Voer een image URL in</p>
+                <input type="text" id="txtFotoUrl" placeholder="Image URL">
+                <button id="btnWijzigFoto">Wijzig Foto</button>
+                <img id="imgFoto" src="https://via.placeholder.com/200" alt="Foto" style="max-width: 200px; margin-top: 10px;">
+            </div>
+
+            <!-- Example 19: Checkbox -->
+            <div class="section">
+                <h2>Voorbeeld 19: Checkbox</h2>
+                <p>Vink de checkbox aan/uit</p>
+                <input type="checkbox" id="chkAkkoord">
+                <label for="chkAkkoord">Ik ga akkoord</label>
+                <div id="txtCheckbox" class="output"></div>
+            </div>
+
+            <!-- Example 20: Radio Buttons -->
+            <div class="section">
+                <h2>Voorbeeld 20: Radio Buttons</h2>
+                <p>Selecteer een optie</p>
+                <input type="radio" name="keuze" value="Optie 1" id="radio1">
+                <label for="radio1">Optie 1</label><br>
+                <input type="radio" name="keuze" value="Optie 2" id="radio2">
+                <label for="radio2">Optie 2</label><br>
+                <input type="radio" name="keuze" value="Optie 3" id="radio3">
+                <label for="radio3">Optie 3</label><br>
+                <div id="txtRadio" class="output"></div>
+            </div>
+
+            <!-- Example 21: Select -->
+            <div class="section">
+                <h2>Voorbeeld 21: Dropdown</h2>
+                <p>Selecteer een optie uit de dropdown</p>
+                <select id="selOptie">
+                    <option value="">-- Kies een optie --</option>
+                    <option value="Optie A">Optie A</option>
+                    <option value="Optie B">Optie B</option>
+                    <option value="Optie C">Optie C</option>
+                </select>
+                <div id="txtSelect" class="output"></div>
+            </div>
+
+            <!-- Example 22: Key Press -->
+            <div class="section">
+                <h2>Voorbeeld 22: Toetsenbord Input</h2>
+                <p>Type iets in het veld</p>
+                <input type="text" id="txtToets" placeholder="Type hier...">
+                <div id="txtToetsResult" class="output"></div>
+            </div>
+
+            <!-- Example 23: Focus/Blur -->
+            <div class="section">
+                <h2>Voorbeeld 23: Focus en Blur</h2>
+                <p>Klik in en uit het veld (check console)</p>
+                <input type="text" id="txtFocus" placeholder="Klik hier...">
+            </div>
+
+            <!-- Example 24: Prevent Default -->
+            <div class="section">
+                <h2>Voorbeeld 24: Prevent Default</h2>
+                <p>Formulier wordt niet verzonden (check console)</p>
+                <form id="formSubmit">
+                    <input type="text" placeholder="Naam">
+                    <button type="submit">Verzend</button>
+                </form>
+                <div id="txtFormResult" class="output"></div>
+            </div>
+
+            <!-- Example 25: Create Element -->
+            <div class="section">
+                <h2>Voorbeeld 25: Nieuw Element Maken</h2>
+                <p>Maak dynamisch nieuwe elementen</p>
+                <button id="btnNieuwElement">Maak Nieuw Element</button>
+                <div id="divContainer"></div>
+            </div>
+
+            <!-- Console Output -->
+            <div class="section">
+                <h2>Console Output</h2>
+                <div id="console" class="console-output">
+                    <div style="color: #4ec9b0;">// Console output verschijnt hier...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="examples.js"></script>
+    <script>
+        // Override console.log to display in the page
+        const originalLog = console.log;
+        const consoleDiv = document.getElementById('console');
+        
+        const addToConsole = (message, color = '#d4d4d4') => {
+            const line = document.createElement('div');
+            line.style.color = color;
+            line.textContent = message;
+            consoleDiv.appendChild(line);
+            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        }
+
+        console.log = (...args) => {
+            originalLog.apply(console, args);
+            const message = args.map(arg => {
+                if (typeof arg === 'object') {
+                    return JSON.stringify(arg, null, 2);
+                }
+                return String(arg);
+            }).join(' ');
+            addToConsole(message);
+        };
+    </script>
+</body>
+</html>
